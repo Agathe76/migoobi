@@ -1,0 +1,42 @@
+body, html {
+    margin: 0;
+    height: 100%;
+    font-family: 'Nanum Pen Script', cursive;
+}
+
+.page {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+
+    .title {
+        display: flex;
+        padding: 0 16px;
+        justify-content: space-between;
+
+        .sec {
+            font-size: 20px;
+        }
+    }
+    
+    .content {
+        height: -webkit-fill-available;
+
+        .button {
+            font-family: 'Nanum Pen Script', cursive;
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            position: absolute;
+            top: 60%;
+            left: 10%;
+        }
+
+        .hidden {
+            opacity: 0;
+            height: 0px;
+            top: -100px;
+            left: -100px;
+        }
+    }
+}

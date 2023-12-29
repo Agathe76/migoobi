@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Migoobi</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+  </head>
+  <body onLoad="onLoad()">
+    <div class="page">
+      <h1 class="title">
+        <div>Sauras-tu trouver Migoobi ?</div>
+        <div><span #timer id="timer">--</span><span class="sec">sec</span></div>
+      </h1>
+      <div class="content">
+        <button class="button hidden" onclick="winnerPopup()">:D</button>
+      </div>
+    </div>
+    <script type="text/javascript">
+      const startDate = sessionStorage.getItem("startDate");
+      let diffInSeconds = 0;
+      let goTimer = true;
+
+      if(!!startDate) {
+        diffInSeconds = ((new Date()).getTime() - new Date(startDate).getTime()) / 1000;
+      }
+
+      let temps = Math.round(diffInSeconds);
+      const timerElement = document.getElementById("timer");
+
+      setInterval(countSeconds, 1000);
+
+      // functions 
+      function onLoad() {
+        const startDate = sessionStorage.getItem("startDate");
+        if(!startDate) {
+          sessionStorage.setItem("startDate", new Date());
+        }
+      }
+      
+      function countSeconds() {
+        if(goTimer) {
+          timerElement.innerText = temps;
+          temps++;
+        }
+      }
+
+      function winnerPopup() {
+        goTimer = false;
+        alert("Bravo tu as trouvé Migoobi en ".concat(temps).concat(" secondes."));
+      }
+    </script>
+  </body>
+</html>
